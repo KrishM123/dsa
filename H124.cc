@@ -1,3 +1,5 @@
+#include <algorithm> // Add this line
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -26,7 +28,7 @@ public:
         else if (root->left != nullptr) {left = helper(root->left);}
         else if (root->right != nullptr) {right = helper(root->right);}
 
-        maximum_path = max(max(max(left+root->val, right+root->val), max(left+right+root->val, maximum_path)), root->val);;
-        return max(max(left, right) + root->val, root->val); 
-        }
+        maximum_path = std::max(std::max(std::max(left+root->val, right+root->val), std::max(left+right+root->val, maximum_path)), root->val);
+        return std::max(std::max(left, right) + root->val, root->val); 
+    }
 };
